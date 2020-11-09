@@ -6,8 +6,8 @@ require 'pry'
 Genre.destroy_all
 User.destroy_all
 Movie.destroy_all
-Movie_watched.destroy_all
-Genre_preference.destroy_all
+# MoviesWatched.destroy_all
+# GenrePreference.destroy_all
 
 # AI: Seed with 100 categories from the API 
 # api_resp = RestClient.get("http://jservice.io/api/categories?count=100")
@@ -23,9 +23,9 @@ g5 = Genre.create(name: "Horror")
 g6 = Genre.create(name: "Thriller")
 g6 = Genre.create(name: "Romance")
 
-u1 = User.create(name: "Mike", password: "1234")
-u2 = User.create(name: "Tom", password: "1234")
-u3 = User.create(name: "Jess", password: "1234")
+u1 = User.create(username: "Mike", password: "1234")
+u2 = User.create(username: "Tom", password: "1234")
+u3 = User.create(username: "Jess", password: "1234")
 
 m1 = Movie.create(title:"Taken", genre_id: g1.id)
 m2 = Movie.create(title:"The Hangover", genre_id: g2.id)
