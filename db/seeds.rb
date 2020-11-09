@@ -1,10 +1,11 @@
 require 'pry'
-require 'rest-client'
-require 'json'
+ 
+# require 'rest-client'
+# require 'json'
 
-Movie.destroy_all
-User.destroy_all
 Genre.destroy_all
+User.destroy_all
+Movie.destroy_all
 Movie_watched.destroy_all
 Genre_preference.destroy_all
 
