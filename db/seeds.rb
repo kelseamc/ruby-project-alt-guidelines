@@ -1,6 +1,7 @@
 require 'pry'
 require 'rest-client'
 require 'json'
+require 'faker'
 
 Movie.destroy_all
 User.destroy_all
