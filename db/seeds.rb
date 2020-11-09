@@ -26,12 +26,12 @@ u1 = User.create(name: "Mike", password: "1234")
 u2 = User.create(name: "Tom", password: "1234")
 u3 = User.create(name: "Jess", password: "1234")
 
-m1 = Movie.create(title:"Taken" genre_id: g1.id)
-m2 = Movie.create(title:"The Hangover" genre_id: g2.id)
-m3 = Movie.create(title:"Just Mercy" genre_id: g3.id)
-m4 = Movie.create(title:"Star Trek" genre_id: g4.id)
-m5 = Movie.create(title:"Insidious" genre_id: g5.id)
-m6 = Movie.create(title:"The Notebook" genre_id: g6.id)
+m1 = Movie.create(title:"Taken", genre_id: g1.id)
+m2 = Movie.create(title:"The Hangover", genre_id: g2.id)
+m3 = Movie.create(title:"Just Mercy", genre_id: g3.id)
+m4 = Movie.create(title:"Star Trek", genre_id: g4.id)
+m5 = Movie.create(title:"Insidious", genre_id: g5.id)
+m6 = Movie.create(title:"The Notebook", genre_id: g6.id)
 
 
 
