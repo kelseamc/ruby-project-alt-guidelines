@@ -1,4 +1,4 @@
 class Movie < ActiveRecord::Base
-    has_many :movie_swatched
+    has_many :movies_watched
     belongs_to :genre
 end
