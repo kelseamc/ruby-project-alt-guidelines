@@ -30,8 +30,7 @@ class CLI
         system('clear')
         puts "testing"
         sleep(1)
-        puts "Welcome to (our not yet finshed app)"
-        #self.logo 
+        puts "Welcome to (our not yet finshed app)" 
         splash = self.tty_prompt.select("Please Log In or Sign Up!") do |prompt| 
             prompt.choice "Log In"
             prompt.choice "Sign Up"
@@ -48,17 +47,18 @@ class CLI
         prompt = self.tty_prompt 
         username = prompt.ask("Username:")
         password = prompt.mask("Password:")
-        self.testend
-        #@user = User.find_by(username: username, password: password)
-        # if @user 
-        #     system('clear')
-        #     self.login_main_menu 
-        # else
-        #     puts "Invalid username or password."
-        #     sleep(2)
-        #     system('clear')
-        #     self.main_menu  
-        # end
+        #self.testend
+        @user = User.find_by(username: username, password: password)
+        if @user 
+            #system('clear')
+            self.testend
+            #self.next_menu 
+        else
+            puts "Invalid username or password."
+            sleep(2)
+            #system('clear')
+            self.main_menu  
+        end
     
     end
 
@@ -66,13 +66,15 @@ class CLI
         prompt = self.tty_prompt
         username = prompt.ask("Username:")
         password = prompt.mask("Password:")
+        @user = User.create(username: username, password: password)
+        #system('clear')
         self.testend
-        # @user = User.create(username: username, password: password)
-        # system('clear')
-        # self.login_main_menu
+        # self.next_menu
     end
 
     def self.testend
+        puts "\n End of Test"
+        p User.all
         puts "End of Test"
     end 
 
