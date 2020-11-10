@@ -6,8 +6,8 @@ require 'pry'
 Genre.destroy_all
 User.destroy_all
 Movie.destroy_all
-# MoviesWatched.destroy_all
-# GenrePreference.destroy_all
+#MoviesWatched.destroy_all
+#GenrePreference.destroy_all
 
 # AI: Seed with 100 categories from the API 
 # api_resp = RestClient.get("http://jservice.io/api/categories?count=100")
