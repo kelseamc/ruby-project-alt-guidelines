@@ -1,19 +1,13 @@
 require 'pry'
-<<<<<<< HEAD
  
 # require 'rest-client'
 # require 'json'
-=======
-# require 'rest-client'
-# require 'json'
-# require 'faker'
->>>>>>> seed
 
 Genre.destroy_all
 User.destroy_all
 Movie.destroy_all
-#MoviesWatched.destroy_all
-#GenrePreference.destroy_all
+MoviesWatched.destroy_all
+GenrePreference.destroy_all
 
 # AI: Seed with 100 categories from the API 
 # api_resp = RestClient.get("http://jservice.io/api/categories?count=100")
@@ -40,13 +34,13 @@ m4 = Movie.create(title:"Star Trek", genre_id: g4.id)
 m5 = Movie.create(title:"Insidious", genre_id: g5.id)
 m6 = Movie.create(title:"The Notebook", genre_id: g6.id)
 
-mw1 = Movie_watched.create(user_id: u1.id, movie_id: m3)
-mw2 = Movie_watched.create(user_id: u3.id, movie_id: m2)
-mw3 = Movie_watched.create(user_id: u2.id, movie_id: m6)
-mw4 = Movie_watched.create(user_id: u1.id, movie_id: m1)
+mw1 = MoviesWatched.create(user_id: u1.id, movie_id: m3)
+mw2 = MoviesWatched.create(user_id: u3.id, movie_id: m2)
+mw3 = MoviesWatched.create(user_id: u2.id, movie_id: m6)
+mw4 = MoviesWatched.create(user_id: u1.id, movie_id: m1)
 
-gp1 = Genre_preference.create(user_id: u1, genre_id: g3)
-gp1 = Genre_preference.create(user_id: u2, genre_id: g6)
+gp1 = GenrePreference.create(user_id: u1, genre_id: g3)
+gp1 = GenrePreference.create(user_id: u2, genre_id: g6)
 
 
 

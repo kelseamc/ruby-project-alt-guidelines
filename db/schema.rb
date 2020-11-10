@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2020_11_09_220054) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "movies_watched", force: :cascade do |t|
+  create_table "movies_watcheds", force: :cascade do |t|
     t.integer "user_id"
     t.integer "movie_id"
     t.datetime "created_at", null: false
