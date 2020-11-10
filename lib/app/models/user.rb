@@ -1,7 +1,7 @@
 # require "tty-prompt"
 class User < ActiveRecord::Base
-    # has many: movie_watched
-    # has many: genre_preferences
+    has_many :movies_watched
+    has_many :genre_preferences
     # has_many :genres through :genre_preferences
     # has_many :movies through :movie_watched
     # @@prompt = TTY::Prompt.new
@@ -17,4 +17,5 @@ class User < ActiveRecord::Base
     #     password = @@prompt.mask("What is your password?")
     #     self.find_by(username: username, password: password)
     # end
+
 end

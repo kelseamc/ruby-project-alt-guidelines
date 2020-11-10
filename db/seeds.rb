@@ -22,6 +22,7 @@ g4 = Genre.create(name: "Si-Fi")
 g5 = Genre.create(name: "Horror")
 g6 = Genre.create(name: "Thriller")
 g6 = Genre.create(name: "Romance")
+#g7 = Genre.create(name: "Family")
 
 u1 = User.create(username: "Mike", password: "1234")
 u2 = User.create(username: "Tom", password: "1234")
@@ -40,7 +41,8 @@ mw3 = MoviesWatched.create(user_id: u2.id, movie_id: m6.id)
 mw4 = MoviesWatched.create(user_id: u1.id, movie_id: m1.id)
 
 gp1 = GenrePreference.create(user_id: u1.id, genre_id: g3.id)
-gp1 = GenrePreference.create(user_id: u2.id, genre_id: g6.id)
+gp2 = GenrePreference.create(user_id: u1.id, genre_id: g6.id)
+gp3 = GenrePreference.create(user_id: u2.id, genre_id: g6.id)
 
 
 
