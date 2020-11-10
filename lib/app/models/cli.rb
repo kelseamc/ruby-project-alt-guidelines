@@ -94,7 +94,7 @@ class CLI
             self.favorite_genres
         when "My History"
             #self.history
-            self.testend 
+            self.user_watched
         when "End"
             self.testend 
         end 
