@@ -39,6 +39,9 @@ mw2 = Movie_watched.create(user_id: u3.id, movie_id: m2)
 mw3 = Movie_watched.create(user_id: u2.id, movie_id: m6)
 mw4 = Movie_watched.create(user_id: u1.id, movie_id: m1)
 
+gp1 = Genre_preference.create(user_id: u1, genre_id: g3)
+gp1 = Genre_preference.create(user_id: u2, genre_id: g6)
+
 
 
 
