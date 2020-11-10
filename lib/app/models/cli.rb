@@ -128,6 +128,17 @@ class CLI
         @user_genres.each {|genre| puts genre}
     end
 
+    def self.user_watched
+        @user_movies = []
+        @user_watch = MoviesWatched.where(user_id: @user.id)
+        @user_watch.map do |watched_movie|
+            Movie.where(id: watched_movie.id).map do |movie|
+                @user_movie << movie.title
+            end
+        end
+        @user_movie.each {|title| puts title}
+    end
+
     def self.genre_select_test # not done yet
         prompt = self.tty_prompt 
         genre_list = %w(horror comedy action)
@@ -143,3 +154,7 @@ class CLI
 
  #binding.pry
 end 
+
+# def self.user_pref
+#     @user_pref = GenrePreference.where(user_id: @user.id)
+# end
