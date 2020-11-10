@@ -39,7 +39,7 @@ puts "
     :NddyhmsyyMyooooosssssooossssossooossyyyysssssysyhNdhhMdhdh/      
          `d/-sy                                       ss.:m`          
            -::                                         .+/`   "
-    sleep (0.05s)
+    sleep (0.09)
     system 'clear'
 end
 
@@ -79,7 +79,7 @@ puts "                                                  `.--::-
    +yyyhhMdhdNhhyyyyhhyyyyysssssyssossssssyyyyyhdhddmNddNMNNms        
          hy:my                                      -m:/m-            
           ::.                                        `/+`             "
-          sleep (0.05)
+          sleep (0.09)
           system 'clear'
 end
 
@@ -118,7 +118,7 @@ puts "  .+s                     .yy+
     `yyhyyNyyhNyssosysssyysyyyyyyyysssyyyyyyyyyyyhyyhhNddmNmmmd       
           y:`s+                                       o. s/           
            -/-                                        `/+-            "
-    sleep (0.05)
+    sleep (0.09)
     system 'clear'
 end
 
@@ -159,7 +159,7 @@ puts "                                                       .-.
          `d/-sy                                       ss.:m`          
            -::                                         .+/`           
     "
-    sleep (0.05)
+    sleep (0.09)
     system 'clear'
 end
 
@@ -200,7 +200,7 @@ puts "                                                   `.--::-
               ho.yh                     :N:oN-                        
                /+/                       .:-`                         
 "
-sleep (0.05)
+sleep (0.09)
 system 'clear'
 end
 
@@ -240,7 +240,7 @@ puts "
     `yyhyyNyyhNyssosysssyysyyyyyyyysssyyyyyyyyyyyhyyhhNddmNmmmd  
                  ho.yh                     :N:oN-                        
                  /+/                       .:-`  "
-    sleep (0.05)
+    sleep (0.09)
     system 'clear'
 end
 
