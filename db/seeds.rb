@@ -34,6 +34,10 @@ m4 = Movie.create(title:"Star Trek", genre_id: g4.id)
 m5 = Movie.create(title:"Insidious", genre_id: g5.id)
 m6 = Movie.create(title:"The Notebook", genre_id: g6.id)
 
+mw1 = Movie_watched.create(user_id: u1.id, movie_id: m3)
+mw2 = Movie_watched.create(user_id: u3.id, movie_id: m2)
+mw3 = Movie_watched.create(user_id: u2.id, movie_id: m6)
+mw4 = Movie_watched.create(user_id: u1.id, movie_id: m1)
 
 
 
