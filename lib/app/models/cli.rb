@@ -6,17 +6,17 @@ require 'json'
 
 class CLI
 
-    #@@prompt = TTY::Prompt.new
-    #@@artii = Artii::Base.new :font => 'slant'
-    #@@user = nil
+    @@prompt = TTY::Prompt.new
+    @@artii = Artii::Base.new :font => 'slant'
+    @@user = nil
 
-    # def welcome
-    #     system('clear')
-    #     puts "test" #@@artii.asciify("Testing")
-    #     puts "test" #@@artii.asciify("One two three")
-    #     sleep(5)
-    #     #self.auth_sequence
-    # end
+    def welcome
+        system('clear')
+        puts @@artii.asciify("Testing")
+        puts @@artii.asciify("One two three")
+        sleep(2)
+        self.class.main_menu
+    end
 
     def run 
         self.class.main_menu
@@ -29,7 +29,7 @@ class CLI
     def self.main_menu 
         system('clear')
         puts "testing"
-        sleep(3)
+        sleep(1)
     end 
 
 end 
