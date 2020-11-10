@@ -4,6 +4,6 @@ require_relative '../config/environment'
 # a comment here
 
 cli = CLI.new 
-cli.run 
+cli.welcome 
 
 #binding.pry
