@@ -109,7 +109,7 @@ class CLI
 
     #Suggestion--------@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
-    def self.suggestion_menu
+    def self.suggestion_menu 
         prompt = self.tty_prompt
         splash = self.tty_prompt.select("Pick One") do |prompt| 
             prompt.choice "From My Favorites"
@@ -126,7 +126,7 @@ class CLI
         end 
     end 
 
-    def self.moviesuggestor 
+    def self.moviesuggestor #suggests movie from favorites
         self.create_user_watched
         @usermovies =[]
         @user_pref = GenrePreference.where(user_id: @user.id)
@@ -146,7 +146,7 @@ class CLI
         self.sugested_movie_menu
     end 
 
-    def self.pick_genre 
+    def self.pick_genre #suggests movie from picked genre
         self.create_user_watched
         @genre_movies = []
         prompt = self.tty_prompt
