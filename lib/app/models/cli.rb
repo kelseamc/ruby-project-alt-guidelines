@@ -119,7 +119,7 @@ class CLI
     def self.moviesuggestor                                        #suggests movie from favorites
         @usermovies =[]
         self.user_pref.each do |preference|
-            Movie.where(genre_id: preference.genre_id).each do |movie|
+            Movie.where(genre_api_id: preference.genre_api_id).each do |movie|
                 system('clear')
                 @usermovies << movie.title
             end 
@@ -138,7 +138,7 @@ class CLI
         genre_pick = prompt.ask("What genre would you like?")
         Genre.where(name: genre_pick).each do |genre|
             system('clear')
-            Movie.where(genre_id: genre.id).each do |movie|
+            Movie.where(genre_api_id: genre.genre_api_id).each do |movie|
                 system('clear')
                 @genre_movies << movie.title
             end
@@ -202,10 +202,11 @@ class CLI
     def self.favorite_genres                           #lists out favorite genre preferences for "My Favorites"
         @user_genres = []
         self.user_pref.each do |preference|
-            Genre.where(id: preference.genre_id).each do |genre|
+            Genre.where(genre_api_id: preference.genre_api_id).each do |genre|
                 system('clear')
                 @user_genres << genre.name
             end
+            
         end
         puts "Your favorite genres are:"
         @user_genres.each_with_index {|genre, index| puts "#{index +1}. #{genre}"}
@@ -216,16 +217,24 @@ class CLI
     def self.set_genres                                     #Has user select genres and creates user genre preferences
         prompt = self.tty_prompt 
         self.user_pref.delete_all
-        system('clear')
-        genre_list = %w(Horror Comedy Action)
-        result = prompt.multi_select("Select Genre", genre_list)
-        result.map do |genre_name|
+        p @user_pref
+        # system('clear')
+        #dventure, Action, Animation Comedy Crime Documentary Drama Family Fantasy History Horror Music Mystery Romance Thriller War Western)
+        genre_list = ["Adventure", "Action", "Animation", "Comedy", "Crime", "Documentary", "Drama", "Family",
+                         "Fantasy", "History", "Horror", "Mystery", "Romance", "Science Fiction", "Thriller", "War", "Western"]
+
+
+        result = prompt.multi_select("Select Genre", genre_list) #result = [str,str]
+        #p result 
+        result.each do |genre_name|
             Genre.where(name: genre_name).each do |genre|
                 system('clear')
-                GenrePreference.create(user_id: @user.id, genre_id: genre.id)
+                GenrePreference.create(user_id: @user.id, genre_api_id: genre.genre_api_id)
                 system('clear')
             end
         end
+        #p result
+        #sleep(10)
         self.genre_menu
     end 
 

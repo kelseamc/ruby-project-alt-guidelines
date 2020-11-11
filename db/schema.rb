@@ -14,20 +14,23 @@ ActiveRecord::Schema.define(version: 2020_11_09_220054) do
 
   create_table "genre_preferences", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "genre_id"
+    t.integer "genre_api_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "genres", force: :cascade do |t|
     t.string "name"
+    t.integer "genre_api_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "movies", force: :cascade do |t|
     t.string "title"
-    t.integer "genre_id"
+    t.integer "genre_api_id"
+    t.string "overview"
+    t.string "release_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
