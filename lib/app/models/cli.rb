@@ -72,6 +72,7 @@ class CLI
     #Main Menu --------@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
     def self.main_menu 
+        system('clear')
         prompt = self.tty_prompt
         puts @@artii.asciify("What to watch")
         splash = self.tty_prompt.select("What do want to do?") do |prompt| 
@@ -125,18 +126,15 @@ class CLI
         # if self.create_user_watched == nil
                 @suggested = @usermovies.sample        
         else 
-            @user_history.each do |movie|
-                @usermovies.delete(movie)
-            end
+        self.check_suggestion
         end
-        @suggested = @usermovies.sample
-        
         self.sugested_movie_menu
     end 
 
     def self.pick_genre                                            #suggests movie from picked genre
         self.create_user_watched
-        @genre_movies = []
+        system('clear')
+        @usermovies = []
         prompt = self.tty_prompt
         genre_pick = prompt.ask("What genre would you like?")
         
@@ -144,22 +142,26 @@ class CLI
             system('clear')
             Movie.where(genre_api_id: genre.genre_api_id).each do |movie|
                 system('clear')
-                @genre_movies << movie.title
+                @usermovies << movie.title
                 
             end
         end
-        @user_history.each do |movie|
-            @genre_movies.delete(movie)
-        end
-        @suggested = @genre_movies.sample
+        self.check_suggestion
         self.sugested_movie_menu
     end 
 
+    def self.check_suggestion                                     #checks suggestion against user history
+        @user_history.each do |movie|
+            @usermovies.delete(movie)
+        end
+        @suggested = @usermovies.sample
+    end 
   
 
     def self.sugested_movie_menu
         sug = Movie.where(title: @suggested)[0]
-        if @usermovies.count == 0
+        system('clear')
+        if  @usermovies.count == 0
             puts "Sorry you watched all the current Movies in the Preferences"
         else 
         puts "_______________________________________________________________"
@@ -175,11 +177,11 @@ class CLI
             prompt.choice "New Suggestion"
             prompt.choice "Main Menu"
         end
-        
         case splash 
         when "I'm happy with this"
             puts "Thank you for using Movie Selector!"
             sleep(1)
+            system('clear')
             self.main_menu
         when "I've Watched This"
             MoviesWatched.create(user_id: @user.id, movie_id: sug.id)
@@ -196,7 +198,7 @@ class CLI
 
     # Genre Option -----------@@@@@@@@@@@@@@@@@@
     def self.user_pref                                          #Helper method to find user's genre preferences
-        @user_pref = GenrePreference.where(user_id: @user.id)
+        @user_pref = GenrePreference.where(user_id: @user.id)  
     end
 
     def self.genre_menu 
@@ -223,27 +225,20 @@ class CLI
             Genre.where(genre_api_id: preference.genre_api_id).each do |genre|
                 system('clear')
                 @user_genres << genre.name
-            end
-            
+            end    
         end
         puts "Your favorite genres are:"
         @user_genres.each_with_index {|genre, index| puts "#{index +1}. #{genre}"}
-        sleep(2)
         self.genre_menu
     end
 
     def self.set_genres                                     #Has user select genres and creates user genre preferences
         prompt = self.tty_prompt 
         self.user_pref.delete_all
-        #p @user_pref
-        # system('clear')
-        #dventure, Action, Animation Comedy Crime Documentary Drama Family Fantasy History Horror Music Mystery Romance Thriller War Western)
+        system('clear')
         genre_list = ["Adventure", "Action", "Animation", "Comedy", "Crime", "Documentary", "Drama", "Family",
                          "Fantasy", "History", "Horror", "Mystery", "Romance", "Science Fiction", "Thriller", "War", "Western"]
-
-
         result = prompt.multi_select("Select Genre", genre_list) #result = [str,str]
-        #p result 
         result.each do |genre_name|
             Genre.where(name: genre_name).each do |genre|
                 system('clear')
@@ -251,8 +246,6 @@ class CLI
                 system('clear')
             end
         end
-        #p result
-        #sleep(10)
         self.genre_menu
     end 
 
@@ -260,6 +253,7 @@ class CLI
 
     def self.user_watched                                       ## Lits out the array of movies watched
         self.create_user_watched
+        system('clear')
         puts "List of movies you watched: "
         @user_history.each_with_index {|title, index| puts "#{index + 1}. #{title}"}
         prompt = self.tty_prompt
@@ -269,10 +263,12 @@ class CLI
         end 
         case splash 
         when "Back"
+            system('clear')
             self.main_menu
         when "Reset my History"
             self.user_history.delete_all
             self.create_user_watched
+            system('clear')
             self.main_menu
         end 
     end
@@ -297,9 +293,8 @@ class CLI
     #Testing Methods and etc
 
     def self.testend
-        puts "\n End of Test"
-        #p User.all
-        puts "End of Test"
+        puts "I hope you had fun."
+        puts "Goodbye."
     end 
 
  #binding.pry
