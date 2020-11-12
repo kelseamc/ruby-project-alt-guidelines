@@ -26,8 +26,8 @@ class CLI
 
     def self.login_menu 
         system('clear')
-        puts @@artii.asciify("Welcome to")
-        puts @@artii.asciify("What to watch")
+        puts @@pastel.bright_magenta(@@artii.asciify("Welcome to"))
+        puts @@pastel.bright_magenta(@@artii.asciify("What to watch"))
         splash = @@prompt.select("Please Log In or Sign Up!") do |prompt| 
             prompt.choice "Log In"
             prompt.choice "Sign Up"
@@ -166,11 +166,11 @@ class CLI
         if  @usermovies.count == 0
             puts "Sorry you watched all the current Movies in the Preferences"
         else 
-        puts "_______________________________________________________________"
-        puts @suggest.title                        
-        puts @suggest.release_date
-        puts @suggest.overview                      
-        puts "_______________________________________________________________"
+        puts @@pastel.green("_______________________________________________________________")
+        puts @@pastel.bright_blue("Title: #{@suggest.title}")                        
+        puts @@pastel.bright_blue("Release Date: #{@suggest.release_date}")
+        puts @@pastel.bright_blue("Plot: #{@suggest.overview}")                     
+        puts @@pastel.green("_______________________________________________________________")
         end 
     end
 
