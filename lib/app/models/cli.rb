@@ -93,7 +93,6 @@ class CLI
         when "End"
             self.testend 
         end 
-
     end 
 
 
@@ -125,7 +124,6 @@ class CLI
             end 
         end 
         if @user_history == nil
-        # if self.create_user_watched == nil
                 @suggested = @usermovies.sample        
         else 
         self.check_suggestion
@@ -139,15 +137,13 @@ class CLI
         @usermovies = []
         prompt = self.tty_prompt
         genre_pick = prompt.ask("What genre would you like?")
-        
-        Genre.where(name: genre_pick).each do |genre|
-            system('clear')
-            Movie.where(genre_api_id: genre.genre_api_id).each do |movie|
+            Genre.where(name: genre_pick).each do |genre|
                 system('clear')
-                @usermovies << movie.title
-                
+                Movie.where(genre_api_id: genre.genre_api_id).each do |movie|
+                  system('clear')
+                    @usermovies << movie.title  
+                end
             end
-        end
         self.check_suggestion
         self.sugested_movie_menu
     end 
@@ -203,6 +199,7 @@ class CLI
    
 
     # Genre Option -----------@@@@@@@@@@@@@@@@@@
+    
     def self.user_pref                                          #Helper method to find user's genre preferences
         @user_pref = GenrePreference.where(user_id: @user.id)  
     end
@@ -242,9 +239,9 @@ class CLI
         prompt = self.tty_prompt 
         self.user_pref.delete_all
         system('clear')
-        genre_list = ["Adventure", "Action", "Animation", "Comedy", "Crime", "Documentary", "Drama", "Family",
-                         "Fantasy", "History", "Horror", "Mystery", "Romance", "Science Fiction", "Thriller", "War", "Western"]
-        result = prompt.multi_select("Select Genre", genre_list) #result = [str,str]
+        genre_list = Genre.all.map {|genre| genre.name}
+        system('clear')
+        result = prompt.multi_select("Select Genre", genre_list) 
         result.each do |genre_name|
             Genre.where(name: genre_name).each do |genre|
                 system('clear')
