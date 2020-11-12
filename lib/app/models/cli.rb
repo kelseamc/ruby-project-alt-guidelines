@@ -160,18 +160,22 @@ class CLI
     end 
   
 
-    def self.sugested_movie_menu
-        sug = Movie.where(title: @suggested)[0]
+    def self.movie_info
+        @suggest = Movie.where(title: @suggested)[0]
         system('clear')
         if  @usermovies.count == 0
             puts "Sorry you watched all the current Movies in the Preferences"
         else 
         puts "_______________________________________________________________"
-        puts sug.title                        
-        puts sug.release_date
-        puts sug.overview                      
+        puts @suggest.title                        
+        puts @suggest.release_date
+        puts @suggest.overview                      
         puts "_______________________________________________________________"
         end 
+    end
+
+    def self.sugested_movie_menu
+        self.movie_info
         prompt = self.tty_prompt
         splash = self.tty_prompt.select("Pick One") do |prompt| 
             prompt.choice "I'm happy with this"
@@ -186,7 +190,7 @@ class CLI
             system('clear')
             self.main_menu
         when "I've Watched This"
-            MoviesWatched.create(user_id: @user.id, movie_id: sug.id)
+            MoviesWatched.create(user_id: @user.id, movie_id: @suggest.id)
             self.create_user_watched
             system('clear')
             self.suggestion_menu
