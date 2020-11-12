@@ -18,7 +18,7 @@ class CLI
     def welcome
         system('clear')
         sleep(1)
-        Logo.go
+        #Logo.go
         self.class.login_menu
     end
 
@@ -139,11 +139,13 @@ class CLI
         @genre_movies = []
         prompt = self.tty_prompt
         genre_pick = prompt.ask("What genre would you like?")
+        
         Genre.where(name: genre_pick).each do |genre|
             system('clear')
             Movie.where(genre_api_id: genre.genre_api_id).each do |movie|
                 system('clear')
                 @genre_movies << movie.title
+                
             end
         end
         @user_history.each do |movie|
@@ -153,12 +155,18 @@ class CLI
         self.sugested_movie_menu
     end 
 
+  
+
     def self.sugested_movie_menu
         sug = Movie.where(title: @suggested)[0]
         if @usermovies.count == 0
             puts "Sorry you watched all the current Movies in the Preferences"
         else 
-        puts @suggested 
+        puts "_______________________________________________________________"
+        puts sug.title                        
+        puts sug.release_date
+        puts sug.overview                      
+        puts "_______________________________________________________________"
         end 
         prompt = self.tty_prompt
         splash = self.tty_prompt.select("Pick One") do |prompt| 
@@ -294,6 +302,5 @@ class CLI
 
  #binding.pry
 end  ##end of class
-
 
 
