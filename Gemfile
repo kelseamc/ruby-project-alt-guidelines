@@ -9,7 +9,11 @@ gem "require_all"
 gem "faker"
 gem "rake"
 
+
 #For the CLI/API 
 gem 'rest-client'
 gem 'tty-prompt', '~> 0.22.0'
 gem 'artii', '~> 2.1', '>= 2.1.2'
+
+#For looks 
+gem "pastel"

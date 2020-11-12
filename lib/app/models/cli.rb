@@ -3,12 +3,14 @@ require "tty-prompt"
 require "pry"
 require 'rest-client'  
 require 'json' 
+require 'pastel'
 
 class CLI
 
     @@prompt = TTY::Prompt.new
     @@artii = Artii::Base.new :font => 'slant'
     @@user = nil
+    @@pastel = Pastel.new
 
     def self.tty_prompt
         TTY::Prompt.new
@@ -294,7 +296,7 @@ class CLI
 
     def self.testend
         puts "I hope you had fun."
-        puts "Goodbye."
+        puts @@pastel.red("Goodbye.")
     end 
 
  #binding.pry

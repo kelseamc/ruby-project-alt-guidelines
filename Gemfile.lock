@@ -82,6 +82,7 @@ DEPENDENCIES
   activerecord (~> 5.2)
   artii (~> 2.1, >= 2.1.2)
   faker
+  pastel
   pry
   rake
   require_all
