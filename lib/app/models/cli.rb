@@ -183,6 +183,7 @@ class CLI
             self.main_menu
         when "I've Watched This"
             MoviesWatched.create(user_id: @user.id, movie_id: sug.id)
+            self.create_user_watched
             system('clear')
             self.suggestion_menu
         when "New Suggestion"
@@ -271,6 +272,7 @@ class CLI
             self.main_menu
         when "Reset my History"
             self.user_history.delete_all
+            self.create_user_watched
             self.main_menu
         end 
     end
