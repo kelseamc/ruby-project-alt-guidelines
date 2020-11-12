@@ -20,7 +20,6 @@ class CLI
     def welcome
         system('clear')
         sleep(1)
-        #Logo.go
         self.class.login_menu
     end
 
@@ -171,6 +170,8 @@ class CLI
     end
 
     def self.sugested_movie_menu
+        Logo.go
+        system('clear')
         self.movie_info
         prompt = self.tty_prompt
         splash = self.tty_prompt.select("Pick One") do |prompt| 
@@ -259,6 +260,7 @@ class CLI
         system('clear')
         puts "List of movies you watched: "
         @user_history.each_with_index {|title, index| puts "#{index + 1}. #{title}"}
+        puts "\n "
         prompt = self.tty_prompt
         splash = self.tty_prompt.select("Pick One") do |prompt| 
             prompt.choice "Back"
@@ -296,8 +298,8 @@ class CLI
     #Testing Methods and etc
 
     def self.testend
-        puts "I hope you had fun."
-        puts @@pastel.red("Goodbye.")
+        system('clear')
+        puts @@pastel.bright_magenta(@@artii.asciify("Goodbye"))
     end 
 
  #binding.pry

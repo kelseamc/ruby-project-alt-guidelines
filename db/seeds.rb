@@ -59,3 +59,7 @@ api_data_movie["results"].each {|movie| movie["genre_ids"].each {|genre| Movie.c
 
 binding.pry
 
+
+
+
+

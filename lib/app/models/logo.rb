@@ -1,9 +1,12 @@
 
 require 'pry'
+require 'pastel'
 
 class Logo
+  @@pastel = Pastel.new
+
 def self.frame_0
-puts "
+puts @@pastel.cyan( "
                                                        .-.            
          ``  dh+-    ./`                    `yys`  yNNs+:`            
          -+shNN.:+` dNy-                    +ysy``//++-               
@@ -38,13 +41,13 @@ puts "
     +MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMd      
     :NddyhmsyyMyooooosssssooossssossooossyyyysssssysyhNdhhMdhdh/      
          `d/-sy                                       ss.:m`          
-           -::                                         .+/`   "
+           -::                                         .+/`   ")
     sleep (0.09)
     system 'clear'
 end
 
 def self.frame_1
-puts "                                                  `.--::-            
+puts @@pastel.cyan("                                                  `.--::-            
              hho:`   ::                     `oo.  -hMms/:`            
          :/oymm`-:.`dd+`                    -/ss -::-:`               
              `.  ``  `myd-               `omyo   `- -+.               
@@ -78,13 +81,13 @@ puts "                                                  `.--::-
    `yMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMm+   ```
    +yyyhhMdhdNhhyyyyhhyyyyysssssyssossssssyyyyyhdhddmNddNMNNms        
          hy:my                                      -m:/m-            
-          ::.                                        `/+`             "
+          ::.                                        `/+`             ")
           sleep (0.09)
           system 'clear'
 end
 
 def self.frame_2
-puts "  .+s                     .yy+                      
+puts @@pastel.cyan(".+s                     .yy+                      
                    .Nd/.                  `:/sy+                      
                       ods:              `+Nyhs                        
                       .mm+o   `-::++:. -mMMNy`                        
@@ -117,13 +120,13 @@ puts "  .+s                     .yy+
     /MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM.      
     `yyhyyNyyhNyssosysssyysyyyyyyyysssyyyyyyyyyyyhyyhhNddmNmmmd       
           y:`s+                                       o. s/           
-           -/-                                        `/+-            "
+           -/-                                        `/+-            ")
     sleep (0.09)
     system 'clear'
 end
 
 def self.frame_3
-puts "                                                       .-.            
+puts @@pastel.cyan("                            .-.            
          ``  dh+-    ./`                    `yys`  yNNs+:`            
          -+shNN.:+` dNy-                    +ysy``//++-               
                   .   sMd-                +mNh`  .:.//.               
@@ -158,13 +161,13 @@ puts "                                                       .-.
     :NddyhmsyyMyooooosssssooossssossooossyyyysssssysyhNdhhMdhdh/      
          `d/-sy                                       ss.:m`          
            -::                                         .+/`           
-    "
+    ")
     sleep (0.09)
     system 'clear'
 end
 
 def self.frame_4
-puts "                                                   `.--::-            
+puts @@pastel.cyan("                          `.--::-            
              hho:`   ::                     `oo.  -hMms/:`            
          :/oymm`-:.`dd+`                    -/ss -::-:`               
              `.  ``  `myd-               `omyo   `- -+.               
@@ -199,13 +202,13 @@ puts "                                                   `.--::-
     :NddyhmsyyMyooooosssssooossssossooossyyyysssssysyhNdhhMdhdh/ 
               ho.yh                     :N:oN-                        
                /+/                       .:-`                         
-"
+")
 sleep (0.09)
 system 'clear'
 end
 
 def self.frame_5
-puts "                                                                      
+puts @@pastel.cyan( "                                                                      
                     .+s                     .yy+                      
                    .Nd/.                  `:/sy+                      
                       ods:              `+Nyhs                        
@@ -239,14 +242,14 @@ puts "
     /MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM.      
     `yyhyyNyyhNyssosysssyysyyyyyyyysssyyyyyyyyyyyhyyhhNddmNmmmd  
                  ho.yh                     :N:oN-                        
-                 /+/                       .:-`  "
+                 /+/                       .:-`  ")
     sleep (0.09)
     system 'clear'
 end
 
 
 def self.animation
-    5.times do
+  3.times do
       Logo.frame_0
       Logo.frame_1
       Logo.frame_2
