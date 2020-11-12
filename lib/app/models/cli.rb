@@ -63,10 +63,17 @@ class CLI
     def self.signup 
         prompt = self.tty_prompt
         username = prompt.ask("Username:")
-        password = prompt.mask("Password:")
-        @user = User.create(username: username, password: password)
-        system('clear')
-        self.set_genres
+        if User.all.any? {|user| user.username == username}
+            system('clear')
+            puts "That username is already taken, please pick another!"
+            self.signup
+        else
+            system('clear')
+            password = prompt.mask("Password:")
+            @user = User.create(username: username, password: password)
+            system('clear')
+            self.set_genres
+        end 
     end
 
 
@@ -231,6 +238,7 @@ class CLI
                 @user_genres << genre.name
             end    
         end
+        system('clear')
         puts "Your favorite genres are:"
         @user_genres.each_with_index {|genre, index| puts "#{index +1}. #{genre}"}
         puts "\n "
