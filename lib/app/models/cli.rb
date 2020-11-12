@@ -26,7 +26,7 @@ class CLI
     def self.login_menu 
         system('clear')
         puts @@pastel.bright_magenta(@@artii.asciify("Welcome to"))
-        puts @@pastel.bright_magenta(@@artii.asciify("What to watch"))
+        puts @@pastel.bright_magenta(@@artii.asciify("What to Watch"))
         splash = @@prompt.select("Please Log In or Sign Up!") do |prompt| 
             prompt.choice "Log In"
             prompt.choice "Sign Up"
@@ -75,7 +75,7 @@ class CLI
     def self.main_menu 
         system('clear')
         prompt = self.tty_prompt
-        puts @@pastel.bright_magenta(@@artii.asciify("What to watch"))
+        puts @@pastel.bright_magenta(@@artii.asciify("What to Watch"))
         splash = self.tty_prompt.select("What do want to do?") do |prompt| 
             prompt.choice "Suggest a Movie"
             prompt.choice "Genre Settings"
@@ -208,14 +208,14 @@ class CLI
     def self.genre_menu 
         prompt = self.tty_prompt
         splash = self.tty_prompt.select("Pick One") do |prompt| 
-            prompt.choice "See my Genres"
-            prompt.choice "Reset my Genres"
+            prompt.choice "See My Genres"
+            prompt.choice "Reset My Genres"
             prompt.choice "Main Menu"
         end 
         case splash 
-        when "See my Genres"
+        when "See My Genres"
             self.favorite_genres
-        when "Reset my Genres"
+        when "Reset My Genres"
             self.set_genres
         when "Main Menu"
             self.main_menu
@@ -233,6 +233,7 @@ class CLI
         end
         puts "Your favorite genres are:"
         @user_genres.each_with_index {|genre, index| puts "#{index +1}. #{genre}"}
+        puts "\n "
         self.genre_menu
     end
 
@@ -242,7 +243,7 @@ class CLI
         system('clear')
         genre_list = Genre.all.map {|genre| genre.name}
         system('clear')
-        result = prompt.multi_select("Select Genre", genre_list) 
+        result = prompt.multi_select("Select Your Favorite Genres", genre_list) 
         result.each do |genre_name|
             Genre.where(name: genre_name).each do |genre|
                 system('clear')
