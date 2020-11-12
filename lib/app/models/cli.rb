@@ -17,19 +17,15 @@ class CLI
     #Welcome & user login --------
     def welcome
         system('clear')
-        puts @@artii.asciify("Welcome to")
-        puts @@artii.asciify("What to watch")
         sleep(1)
+        Logo.go
         self.class.login_menu
     end
 
-    # def run 
-    #     self.class.main_menu
-    # end 
-
     def self.login_menu 
         system('clear')
-        puts "Welcome to (our not yet finshed app)" 
+        puts @@artii.asciify("Welcome to")
+        puts @@artii.asciify("What to watch")
         splash = @@prompt.select("Please Log In or Sign Up!") do |prompt| 
             prompt.choice "Log In"
             prompt.choice "Sign Up"
@@ -77,6 +73,7 @@ class CLI
 
     def self.main_menu 
         prompt = self.tty_prompt
+        puts @@artii.asciify("What to watch")
         splash = self.tty_prompt.select("What do want to do?") do |prompt| 
             prompt.choice "Suggest a Movie"
             prompt.choice "Genre Settings"
@@ -124,10 +121,16 @@ class CLI
                 @usermovies << movie.title
             end 
         end 
-        self.create_user_watched.each do |movie|
-            @usermovies.delete(movie)
+        if @user_history == nil
+        # if self.create_user_watched == nil
+                @suggested = @usermovies.sample        
+        else 
+            @user_history.each do |movie|
+                @usermovies.delete(movie)
+            end
         end
         @suggested = @usermovies.sample
+        
         self.sugested_movie_menu
     end 
 
@@ -151,7 +154,12 @@ class CLI
     end 
 
     def self.sugested_movie_menu
+        sug = Movie.where(title: @suggested)[0]
+        if @usermovies.count == 0
+            puts "Sorry you watched all the current Movies in the Preferences"
+        else 
         puts @suggested 
+        end 
         prompt = self.tty_prompt
         splash = self.tty_prompt.select("Pick One") do |prompt| 
             prompt.choice "I'm happy with this"
@@ -159,6 +167,7 @@ class CLI
             prompt.choice "New Suggestion"
             prompt.choice "Main Menu"
         end
+        
         case splash 
         when "I'm happy with this"
             puts "Thank you for using Movie Selector!"
@@ -217,7 +226,7 @@ class CLI
     def self.set_genres                                     #Has user select genres and creates user genre preferences
         prompt = self.tty_prompt 
         self.user_pref.delete_all
-        p @user_pref
+        #p @user_pref
         # system('clear')
         #dventure, Action, Animation Comedy Crime Documentary Drama Family Fantasy History Horror Music Mystery Romance Thriller War Western)
         genre_list = ["Adventure", "Action", "Animation", "Comedy", "Crime", "Documentary", "Drama", "Family",
@@ -244,7 +253,18 @@ class CLI
         self.create_user_watched
         puts "List of movies you watched: "
         @user_history.each_with_index {|title, index| puts "#{index + 1}. #{title}"}
-        self.main_menu
+        prompt = self.tty_prompt
+        splash = self.tty_prompt.select("Pick One") do |prompt| 
+            prompt.choice "Back"
+            prompt.choice "Reset my History"
+        end 
+        case splash 
+        when "Back"
+            self.main_menu
+        when "Reset my History"
+            self.user_history.delete_all
+            self.main_menu
+        end 
     end
 
     def self.create_user_watched                                #generates an array of movies watched
@@ -260,11 +280,11 @@ class CLI
         @user_history.uniq!
     end 
 
-
+    def self.user_history
+        @user_hist = MoviesWatched.where(user_id: @user.id)
+    end
 
     #Testing Methods and etc
-
-
 
     def self.testend
         puts "\n End of Test"
