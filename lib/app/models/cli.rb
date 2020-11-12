@@ -76,7 +76,7 @@ class CLI
     def self.main_menu 
         system('clear')
         prompt = self.tty_prompt
-        puts @@artii.asciify("What to watch")
+        puts @@pastel.bright_magenta(@@artii.asciify("What to watch"))
         splash = self.tty_prompt.select("What do want to do?") do |prompt| 
             prompt.choice "Suggest a Movie"
             prompt.choice "Genre Settings"
