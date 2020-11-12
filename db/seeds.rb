@@ -20,7 +20,7 @@ api_data_movie = JSON.parse(api_resp_movie)
 api_data_genre["genres"].each { |genre| Genre.create(genre_api_id: genre["id"], name: genre["name"] )}
 
 api_data_movie["results"].each {|movie| Movie.create(title: movie["title"], genre_api_id: movie["genre_ids"][0], overview: movie["overview"], release_date: movie["release_date"])}
-
+#api_data_movie["results"].each {|movie| movie[genre_ids"].each {|genre| Movie.create(title: movie["title"], genre_api_id: genre, overview: movie["overview"], release_date: movie["release_date"])}}
 
 # g1 = Genre.create(name: "Action")
 # g2 = Genre.create(name: "Comedy")
