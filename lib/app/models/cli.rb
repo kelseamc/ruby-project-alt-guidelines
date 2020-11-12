@@ -38,7 +38,7 @@ class CLI
         when "Sign Up"
             self.signup 
         when "Quit"
-            puts "Goodbye"
+            self.testend
         end 
     end
 
@@ -162,9 +162,9 @@ class CLI
             puts "Sorry you watched all the current Movies in the Preferences"
         else 
         puts @@pastel.green("_______________________________________________________________")
-        puts @@pastel.bright_blue("Title: #{@suggest.title}")                        
-        puts @@pastel.bright_blue("Release Date: #{@suggest.release_date}")
-        puts @@pastel.bright_blue("Plot: #{@suggest.overview}")                     
+        puts @@pastel.bright_magenta("Title: #{@suggest.title}")                        
+        puts @@pastel.bright_magenta("Release Date: #{@suggest.release_date}")
+        puts @@pastel.bright_magenta("Plot: #{@suggest.overview}")                     
         puts @@pastel.green("_______________________________________________________________")
         end 
     end
