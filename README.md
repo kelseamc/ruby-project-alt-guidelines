@@ -44,14 +44,14 @@ Users can login/make an account that would save their genre setting as well as w
 - `VSCode`
 
 **Gems**
-`gem activerecord` '~> 5.2'
+`gem activerecord`
 `gem sinatra-activerecord`
-`gem sqlite3` '~> 1.3.6'
+`gem sqlite3` 
 `gem pry`
 `gem require_all`
 `gem faker`
 `gem rake`
 `gem rest-client`
-`gem tty-prompt` '~> 0.22.0'
-`gem artii` '~> 2.1' '>= 2.1.2'
+`gem tty-prompt` 
+`gem artii` 
 `gem pastel`
