@@ -177,6 +177,7 @@ class CLI
     end
 
     def self.sugested_movie_menu
+        puts "\n "
         Logo.go
         system('clear')
         self.movie_info
@@ -195,6 +196,7 @@ class CLI
             self.main_menu
         when "I've Watched This"
             MoviesWatched.create(user_id: @user.id, movie_id: @suggest.id)
+            system('clear')
             self.create_user_watched
             system('clear')
             self.suggestion_menu
